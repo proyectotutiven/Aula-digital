@@ -418,6 +418,43 @@ img {
  margin-top:5px;
 }
 
+/* Presentación institucional del proyecto */
+.seccion-institucional {
+ width:84%; max-width:1200px; margin:75px auto;
+}
+.bloque-presentacion {
+ background:white; border:1px solid var(--borde); border-radius:16px;
+ padding:32px; box-shadow:var(--sombra);
+}
+.bloque-presentacion p {color:var(--texto); margin-top:12px}
+.rejilla-identidad {
+ display:grid; grid-template-columns:repeat(2,1fr); gap:20px; margin-top:24px;
+}
+.tarjeta-identidad {
+ background:white; border:1px solid var(--borde); border-radius:15px;
+ padding:25px; box-shadow:var(--sombra);
+}
+.tarjeta-identidad h3 {margin-bottom:10px; color:var(--azul)}
+.tarjeta-identidad p {color:var(--texto)}
+.lista-beneficios {
+ display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:22px;
+}
+.beneficio {background:white; border:1px solid var(--borde); border-radius:12px; padding:20px}
+.beneficio h3 {font-size:16px; margin-bottom:7px}
+.beneficio p {color:var(--texto); font-size:14px}
+.pasos-desarrollo {margin-top:22px; display:grid; gap:14px}
+.paso-desarrollo {display:flex; gap:15px; align-items:flex-start; background:white; border:1px solid var(--borde); border-radius:12px; padding:18px}
+.numero-paso {min-width:34px; height:34px; border-radius:50%; background:var(--claro); color:var(--azul); display:grid; place-items:center; font-weight:bold}
+.paso-desarrollo p {color:var(--texto); font-size:14px; margin-top:4px}
+.etiquetas-tecnologia {display:flex; flex-wrap:wrap; gap:10px; margin-top:18px}
+.etiquetas-tecnologia span {background:var(--claro); color:var(--oscuro); padding:8px 13px; border-radius:20px; font-size:13px; font-weight:bold}
+@media(max-width:600px) {
+ .seccion-institucional {width:90%}
+ .rejilla-identidad,.lista-beneficios {grid-template-columns:1fr}
+ .bloque-presentacion {padding:23px}
+ .paso-desarrollo {padding:15px}
+}
+
 @media(max-width:850px) {
  .grid-materias {grid-template-columns:repeat(2,1fr)}
  .bienvenida {grid-template-columns:1fr}
@@ -445,519 +482,116 @@ img {
  .leccion {padding:18px}
 }
 
-/* PRESENTACIÓN DE AULA DIGITAL */
 
-.presentacion {
-    padding: 55px 25px;
-    margin: 30px auto;
-    max-width: 1150px;
+/* Organización desplegable de años y unidades */
+.nivel-acordeon {
+ background:white;
+ border:1px solid var(--borde);
+ border-radius:14px;
+ overflow:hidden;
+ box-shadow:var(--sombra);
+ margin:14px 0;
 }
-
-.presentacion-intro {
-    text-align: center;
-    max-width: 750px;
-    margin: 0 auto 35px;
+.nivel-acordeon > summary {
+ list-style:none;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:12px;
+ padding:18px 20px;
+ cursor:pointer;
+ font-weight:bold;
+ color:var(--oscuro);
 }
-
-.etiqueta {
-    display: inline-block;
-    color: #3979C9;
-    background: #DCEBFA;
-    padding: 8px 16px;
-    border-radius: 30px;
-    font-size: 12px;
-    font-weight: bold;
-    letter-spacing: 1px;
+.nivel-acordeon > summary::-webkit-details-marker {display:none}
+.nivel-acordeon > summary::after {
+ content:"⌄";
+ color:var(--azul);
+ font-size:23px;
+ line-height:1;
+ transition:transform .2s;
 }
-
-.presentacion-intro h2 {
-    color: #263D59;
-    font-size: 32px;
-    margin: 18px 0;
+.nivel-acordeon[open] > summary::after {transform:rotate(180deg)}
+.nivel-acordeon[open] > summary {background:#F3F8FE}
+.nivel-contenido {padding:0 15px 15px}
+.unidad-acordeon {
+ border:1px solid var(--borde);
+ border-radius:11px;
+ margin:10px 0;
+ overflow:hidden;
 }
-
-.presentacion-intro p {
-    color: #52677F;
-    font-size: 16px;
-    line-height: 1.8;
+.unidad-acordeon > summary {
+ list-style:none;
+ cursor:pointer;
+ padding:14px 16px;
+ font-weight:bold;
+ background:#FAFCFF;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:10px;
 }
-
-.presentacion-tarjetas {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 22px;
+.unidad-acordeon > summary::-webkit-details-marker {display:none}
+.unidad-acordeon > summary::after {content:"+";color:var(--azul);font-size:21px}
+.unidad-acordeon[open] > summary::after {content:"−"}
+.temas-acordeon {padding:10px;display:grid;gap:9px}
+.tema-acordeon {
+ border:1px solid var(--borde);
+ border-radius:10px;
+ overflow:hidden;
+ background:#fff;
 }
-
-.info-card {
-    background: #FFFFFF;
-    padding: 28px;
-    border-radius: 18px;
-    border: 1px solid #DCEBFA;
-    box-shadow: 0 5px 18px rgba(38, 61, 89, 0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+.tema-acordeon > summary {
+ list-style:none;
+ cursor:pointer;
+ padding:13px 15px;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:12px;
+ color:var(--oscuro);
+ font-weight:600;
 }
-
-.info-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 25px rgba(38, 61, 89, 0.14);
+.tema-acordeon > summary::-webkit-details-marker {display:none}
+.tema-acordeon > summary::after {
+ content:"⌄";
+ color:var(--azul);
+ font-size:21px;
+ flex-shrink:0;
+ transition:transform .2s;
 }
-
-.info-card h3 {
-    color: #3979C9;
-    margin-bottom: 14px;
-    font-size: 20px;
-}
-
-.info-card p {
-    color: #52677F;
-    line-height: 1.8;
-    font-size: 15px;
-}
-
-@media (max-width: 650px) {
-    .presentacion-tarjetas {
-        grid-template-columns: 1fr;
-    }
-
-    .presentacion-intro h2 {
-        font-size: 26px;
-    }
-
-    .presentacion {
-        padding: 35px 16px;
-    }
-}
-
-/* MENU DE NAVEGACION */
-
-.menu-toggle {
-    display: none;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 8px;
-}
-
-.menu-toggle span {
-    display: block;
-    width: 25px;
-    height: 3px;
-    background: #263D59;
-    margin: 5px 0;
-    border-radius: 5px;
-    transition: 0.3s;
-}
-
-@media (max-width: 700px) {
-    .encabezado {
-        position: relative;
-        flex-wrap: wrap;
-    }
-
-    .menu-toggle {
-        display: block;
-    }
-
-    .navegacion {
-        display: none;
-        width: 100%;
-        flex-direction: column;
-        gap: 0;
-        padding-top: 15px;
-    }
-
-    .navegacion.activo {
-        display: flex;
-    }
-
-    .navegacion a {
-        padding: 13px;
-        border-top: 1px solid #DCEBFA;
-    }
-}
-
-
-/* SECCION DETRAS DE AULA DIGITAL */
-
-.desarrollo {
-    max-width: 1150px;
-    margin: 35px auto;
-    padding: 55px 25px;
-}
-
-.desarrollo-cabecera {
-    text-align: center;
-    max-width: 750px;
-    margin: 0 auto 35px;
-}
-
-.desarrollo-cabecera h2 {
-    color: #263D59;
-    font-size: 32px;
-    margin: 18px 0;
-}
-
-.desarrollo-cabecera p {
-    color: #52677F;
-    line-height: 1.8;
-}
-
-.desarrollo-contenido {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
-
-.desarrollo-bloque {
-    background: white;
-    padding: 25px;
-    border-radius: 16px;
-    border: 1px solid #DCEBFA;
-    box-shadow: 0 5px 18px rgba(38,61,89,0.07);
-}
-
-.desarrollo-bloque h3 {
-    color: #3979C9;
-    margin-bottom: 15px;
-}
-
-.desarrollo-bloque p {
-    color: #52677F;
-    line-height: 1.8;
-    font-size: 14px;
-}
-
-.tecnologias {
-    margin-top: 35px;
-    padding: 28px;
-    background: #DCEBFA;
-    border-radius: 18px;
-}
-
-.tecnologias h3 {
-    color: #263D59;
-    text-align: center;
-    margin-bottom: 22px;
-}
-
-.tecnologia-lista {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-}
-
-.tecnologia-item {
-    background: white;
-    padding: 18px;
-    border-radius: 12px;
-    text-align: center;
-}
-
-.tecnologia-item strong {
-    color: #3979C9;
-    font-size: 17px;
-}
-
-.tecnologia-item p {
-    color: #52677F;
-    font-size: 13px;
-    line-height: 1.6;
-    margin-top: 8px;
-}
-
-@media (max-width: 700px) {
-    .desarrollo-contenido,
-    .tecnologia-lista {
-        grid-template-columns: 1fr;
-    }
-
-    .desarrollo {
-        padding: 35px 16px;
-    }
-
-    .desarrollo-cabecera h2 {
-        font-size: 26px;
-    }
-}
-
-
-/* SUBMENU DE IDENTIDAD */
-
-.submenu-identidad {
-    position: relative;
-}
-
-.submenu-identidad > button {
-    background: transparent;
-    border: none;
-    color: #263D59;
-    font-size: 15px;
-    cursor: pointer;
-    padding: 10px;
-}
-
-.opciones-identidad {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    min-width: 150px;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 8px 22px rgba(38,61,89,0.15);
-    padding: 8px;
-    z-index: 1000;
-}
-
-.opciones-identidad.activo {
-    display: block;
-}
-
-.opciones-identidad button {
-    display: block;
-    width: 100%;
-    padding: 12px;
-    border: none;
-    background: white;
-    color: #263D59;
-    text-align: left;
-    cursor: pointer;
-    border-radius: 8px;
-}
-
-.opciones-identidad button:hover {
-    background: #DCEBFA;
-}
-
-@media (max-width: 700px) {
-    .opciones-identidad {
-        position: static;
-        box-shadow: none;
-        background: #F4F8FC;
-        margin-top: 5px;
-    }
-
-    .submenu-identidad > button {
-        width: 100%;
-        text-align: left;
-        padding: 13px;
-    }
-}
-
-
-/* VENTANAS EMERGENTES */
-
-.modal-identidad {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(20, 38, 60, 0.65);
-    z-index: 9999;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-}
-
-.modal-identidad.activo {
-    display: flex;
-}
-
-.modal-contenido {
-    position: relative;
-    background: white;
-    width: 100%;
-    max-width: 430px;
-    padding: 35px 25px;
-    border-radius: 20px;
-    text-align: center;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-    animation: aparecerModal 0.25s ease;
-}
-
-.modal-contenido h2 {
-    color: #263D59;
-    margin: 20px 0;
-}
-
-.modal-contenido p {
-    color: #52677F;
-    line-height: 1.8;
-}
-
-.cerrar-modal {
-    position: absolute;
-    right: 15px;
-    top: 12px;
-    border: none;
-    background: transparent;
-    color: #263D59;
-    font-size: 23px;
-    cursor: pointer;
-}
-
-.boton-cerrar {
-    margin-top: 25px;
-    background: #3979C9;
-    color: white;
-    border: none;
-    padding: 12px 25px;
-    border-radius: 10px;
-    cursor: pointer;
-}
-
-@keyframes aparecerModal {
-    from {
-        opacity: 0;
-        transform: translateY(15px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* BOTON DE PROGRESO */
-
-.boton-progreso {
-    display: block;
-    width: 100%;
-    padding: 15px;
-    margin: 20px 0;
-    border: 2px solid #3979C9;
-    border-radius: 12px;
-    background: #DCEBFA;
-    color: #263D59;
-    font-weight: bold;
-    font-size: 15px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.boton-progreso:hover {
-    background: #3979C9;
-    color: white;
-}
-
-.boton-progreso[aria-pressed="true"] {
-    background: #42B7A5;
-    border-color: #42B7A5;
-    color: white;
-}
+.tema-acordeon[open] > summary {background:#F3F8FE}
+.tema-acordeon[open] > summary::after {transform:rotate(180deg)}
+.info-tema {padding:4px 16px 17px;border-top:1px solid var(--borde)}
+.info-tema h4 {color:var(--azul);margin:14px 0 5px;font-size:15px}
+.info-tema p {color:var(--texto);margin:7px 0}
+.info-tema .actividad-tema {background:#F4F8FC;border-radius:9px;padding:12px;margin-top:12px}
+.contenido-tema {background:white;border:1px solid var(--borde);border-radius:15px;padding:24px;margin-top:22px;box-shadow:var(--sombra)}
+.contenido-tema h2 {margin:8px 0 12px}
+.contenido-tema h3 {color:var(--azul);margin:20px 0 8px}
+.contenido-tema p {color:var(--texto);margin:9px 0}
+.contenido-tema ul {padding-left:22px;color:var(--texto)}
+.contenido-tema li {margin:8px 0}
 
 </style>
 </head>
 
 <body>
 
-
 <header class="encabezado">
-    <div class="logo">
-        <span class="logo-icono">A</span>
-        <span>Aula Digital</span>
-    </div>
+ <div class="logo">
+  <span class="logo-icono">A</span>
+  <span>Aula Digital</span>
+ </div>
 
-    <button class="menu-toggle" id="menuToggle"
-        aria-label="Abrir menú" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-    </button>
-
-    
-<nav class="navegacion" id="menuNavegacion">
-    <a href="#inicio">Inicio</a>
-    <a href="#conocenos">Acerca de</a>
-    <a href="#proyecto">Proyecto</a>
-    <a href="#materias">Materias</a>
-
-    <div class="submenu-identidad">
-        <button id="botonIdentidad">
-            Nuestra identidad ▾
-        </button>
-
-        <div class="opciones-identidad" id="opcionesIdentidad">
-            <button onclick="mostrarIdentidad('mision')">
-                Misión
-            </button>
-
-            <button onclick="mostrarIdentidad('vision')">
-                Visión
-            </button>
-        </div>
-    </div>
-</nav>
-<button
-    type="button"
-    class="boton-busqueda"
-    onclick="irAlBuscador()"
-    aria-label="Buscar">
-    🔍
-</button>
+ <nav class="navegacion">
+  <a href="#inicio">Inicio</a>
+  <a href="#materias">Materias</a>
+  <a href="#proyecto">Proyecto</a>
+  <a href="#identidad">Identidad</a>
+  <a href="#nosotros">Acerca de</a>
+ </nav>
 </header>
-
-
-
-<section class="presentacion" id="conocenos">
-
-    <div class="presentacion-intro">
-        <span class="etiqueta">APRENDER • PRACTICAR • CRECER</span>
-
-        <h2>Bienvenido a Aula Digital</h2>
-
-        <p>
-            Un espacio educativo diseñado para fortalecer
-            los conocimientos técnicos de los estudiantes
-            de Bachillerato Técnico en Informática de la
-            Unidad Educativa Salitre.
-        </p>
-    </div>
-
-    <div class="presentacion-tarjetas">
-
-        <article class="info-card">
-            <h3>🎯 Nuestro objetivo</h3>
-            <p>
-                Facilitar el aprendizaje mediante recursos
-                digitales, explicaciones, ejemplos y
-                actividades que permitan reforzar los
-                conocimientos adquiridos en clases.
-            </p>
-        </article>
-
-        <article class="info-card">
-            <h3>🚀 Nuestra misión</h3>
-            <p>
-                Brindar un espacio de apoyo académico
-                accesible e interactivo que motive a los
-                estudiantes a aprender, practicar y
-                desarrollar sus habilidades informáticas.
-            </p>
-        </article>
-
-        <article class="info-card">
-            <h3>🌟 Nuestra visión</h3>
-            <p>
-                Ser una plataforma educativa de referencia
-                para el aprendizaje autónomo y el
-                fortalecimiento de la formación técnica
-                en nuestra institución.
-            </p>
-        </article>
-
-        <article class="info-card">
-            <h3>💡 Nuestro propósito</h3>
-            <p>
-                Complementar la enseñanza del colegio,
-                ofreciendo herramientas que ayuden a
-                comprender mejor las materias técnicas
-                y resolver dudas fuera del aula.
-            </p>
-        </article>
-
-    </div>
-
-</section>
-
 
 <section class="bienvenida" id="inicio">
  <div>
@@ -978,91 +612,6 @@ img {
    alt="Estudiante aprendiendo tecnología en una computadora">
  </div>
 </section>
-
-<!-- DESARROLLO DEL PROYECTO -->
-
-<section class="desarrollo" id="proyecto">
-
-    <div class="desarrollo-cabecera">
-        <span class="etiqueta">CONOCE NUESTRO PROCESO</span>
-        <h2>Detrás de Aula Digital</h2>
-        <p>
-            Un proyecto tecnológico creado para apoyar
-            el aprendizaje y fortalecer la formación
-            técnica de los estudiantes.
-        </p>
-    </div>
-
-    <div class="desarrollo-contenido">
-
-        <article class="desarrollo-bloque">
-            <h3>💡 ¿Cómo surgió la idea?</h3>
-            <p>
-                Aula Digital nace de la necesidad de contar
-                con un espacio complementario a las clases,
-                donde los estudiantes puedan consultar
-                contenidos de las materias técnicas,
-                repasar conceptos y reforzar sus conocimientos.
-            </p>
-        </article>
-
-        <article class="desarrollo-bloque">
-            <h3>🎯 ¿Para qué se creó?</h3>
-            <p>
-                Su finalidad es facilitar el acceso a
-                información educativa, promover el
-                aprendizaje autónomo y ofrecer recursos
-                que ayuden a comprender mejor los temas
-                estudiados en Bachillerato Técnico en Informática.
-            </p>
-        </article>
-
-        <article class="desarrollo-bloque">
-            <h3>🛠️ ¿Cómo se desarrolló?</h3>
-            <p>
-                La plataforma fue construida mediante
-                tecnologías de desarrollo web. Se organizó
-                la información por materias y niveles,
-                incorporando explicaciones, ejemplos,
-                actividades y cuestionarios interactivos.
-            </p>
-        </article>
-
-    </div>
-
-    <div class="tecnologias">
-        <h3>Tecnologías y herramientas utilizadas</h3>
-
-        <div class="tecnologia-lista">
-            <div class="tecnologia-item">
-                <strong>HTML5</strong>
-                <p>Estructura y organización del contenido.</p>
-            </div>
-
-            <div class="tecnologia-item">
-                <strong>CSS3</strong>
-                <p>Diseño visual, colores y adaptación a dispositivos.</p>
-            </div>
-
-            <div class="tecnologia-item">
-                <strong>JavaScript</strong>
-                <p>Funciones dinámicas e interactividad.</p>
-            </div>
-
-            <div class="tecnologia-item">
-                <strong>TrebEdit</strong>
-                <p>Edición y desarrollo del código.</p>
-            </div>
-
-            <div class="tecnologia-item">
-                <strong>GitHub Pages</strong>
-                <p>Publicación y alojamiento de la página web.</p>
-            </div>
-        </div>
-    </div>
-
-</section>
-
 
 <section class="seccion" id="materias">
  <div class="titulo-seccion">
@@ -1131,15 +680,13 @@ img {
 
  <div class="selector-nivel" id="selectorNivel"></div>
 
- <div class="buscador-container">
-    <input
-        class="buscador"
-        id="buscador"
-        type="search"
-        placeholder="Buscar unidades o temas..."
-        oninput="filtrarTemas()"
-    >
-</div>
+ <input
+  class="buscador"
+  id="buscador"
+  type="search"
+  placeholder="Buscar unidades o temas..."
+  oninput="filtrarTemas()"
+ >
 
  <div class="unidades" id="contenidoUnidades"></div>
 
@@ -1164,35 +711,86 @@ img {
  >
 </section>
 
+<section class="seccion-institucional" id="proyecto">
+ <div class="titulo-seccion">
+  <span class="etiqueta">CONOCE AULA DIGITAL</span>
+  <h2>Un espacio para aprender y desarrollar habilidades</h2>
+  <p>Una propuesta educativa de apoyo para el Bachillerato Técnico en Informática.</p>
+ </div>
+ <div class="bloque-presentacion">
+  <h3>¿Qué es Aula Digital?</h3>
+  <p>Aula Digital es una plataforma educativa creada como recurso complementario para los estudiantes de Bachillerato Técnico en Informática de la Unidad Educativa Salitre. Reúne contenidos organizados por materias, años, unidades y temas, con explicaciones y ejemplos que permiten consultar los conocimientos de forma clara y desde distintos dispositivos.</p>
+  <p>La plataforma no pretende reemplazar las clases ni el acompañamiento docente. Su función es reforzar lo aprendido en el aula y ofrecer un lugar de consulta para repasar contenidos cuando el estudiante lo necesite.</p>
+ </div>
+</section>
+
+<section class="seccion-institucional" id="identidad">
+ <div class="titulo-seccion">
+  <span class="etiqueta">NUESTRA IDENTIDAD</span>
+  <h2>Misión, visión y objetivos</h2>
+  <p>Los principios que orientan el desarrollo y la utilidad de esta propuesta.</p>
+ </div>
+ <div class="rejilla-identidad">
+  <article class="tarjeta-identidad">
+   <h3>Misión</h3>
+   <p>Brindar a los estudiantes de Bachillerato Técnico en Informática un recurso digital accesible y organizado que apoye su proceso de aprendizaje mediante contenidos explicativos, ejemplos y actividades de consulta.</p>
+  </article>
+  <article class="tarjeta-identidad">
+   <h3>Visión</h3>
+   <p>Consolidarse como una herramienta educativa de apoyo para la comunidad estudiantil de la Unidad Educativa Salitre, que motive el aprendizaje autónomo y contribuya al fortalecimiento continuo de las competencias tecnológicas.</p>
+  </article>
+  <article class="tarjeta-identidad">
+   <h3>Objetivo general</h3>
+   <p>Desarrollar una plataforma web educativa que organice y facilite la consulta de contenidos de las materias técnicas de Informática correspondientes al Bachillerato.</p>
+  </article>
+  <article class="tarjeta-identidad">
+   <h3>Objetivos específicos</h3>
+   <p>Organizar los contenidos por niveles, unidades y temas; presentar explicaciones comprensibles; facilitar la búsqueda de información; y promover el repaso y el aprendizaje autónomo.</p>
+  </article>
+ </div>
+</section>
+
+<section class="seccion-institucional" id="beneficios">
+ <div class="titulo-seccion">
+  <span class="etiqueta">APORTE A LA INSTITUCIÓN</span>
+  <h2>¿Cómo ayuda Aula Digital al colegio?</h2>
+  <p>Beneficios que la plataforma busca aportar a estudiantes y docentes.</p>
+ </div>
+ <div class="lista-beneficios">
+  <article class="beneficio"><h3>Apoyo al aprendizaje</h3><p>Permite que los estudiantes repasen los temas vistos en clase y consulten explicaciones cuando necesiten reforzar un conocimiento.</p></article>
+  <article class="beneficio"><h3>Acceso organizado a los contenidos</h3><p>Reúne en un mismo sitio los temas de las materias técnicas, clasificados por año, unidad y tema para facilitar su localización.</p></article>
+  <article class="beneficio"><h3>Complemento para la enseñanza</h3><p>Ofrece al docente un recurso adicional que puede recomendar como apoyo para actividades de repaso y consulta.</p></article>
+  <article class="beneficio"><h3>Aprendizaje autónomo</h3><p>Facilita que cada estudiante avance a su ritmo, vuelva a revisar conceptos y fortalezca su responsabilidad en el estudio.</p></article>
+  <article class="beneficio"><h3>Uso de recursos digitales</h3><p>Promueve el aprovechamiento de herramientas web como apoyo a la formación técnica y al desarrollo de competencias digitales.</p></article>
+  <article class="beneficio"><h3>Disponibilidad desde el celular</h3><p>Su diseño web permite consultar los materiales desde un teléfono, tableta o computadora con conexión a Internet.</p></article>
+ </div>
+</section>
+
+<section class="seccion-institucional" id="desarrollo">
+ <div class="titulo-seccion">
+  <span class="etiqueta">PROCESO DE ELABORACIÓN</span>
+  <h2>¿Cómo se desarrolló este proyecto?</h2>
+  <p>Etapas principales de planificación, construcción y publicación de Aula Digital.</p>
+ </div>
+ <div class="pasos-desarrollo">
+  <article class="paso-desarrollo"><span class="numero-paso">1</span><div><h3>Identificación de la necesidad</h3><p>Se reconoció la importancia de contar con un espacio digital donde los estudiantes pudieran encontrar y repasar de manera ordenada los contenidos de las materias técnicas.</p></div></article>
+  <article class="paso-desarrollo"><span class="numero-paso">2</span><div><h3>Planificación y organización</h3><p>Se definió la estructura de la plataforma y se clasificaron las materias, los años de Bachillerato, las unidades y los temas que formarían parte del recurso educativo.</p></div></article>
+  <article class="paso-desarrollo"><span class="numero-paso">3</span><div><h3>Diseño y programación</h3><p>Se construyó la estructura con HTML, se trabajó la presentación visual con CSS y se incorporaron funciones interactivas con JavaScript, como la navegación entre materias, los contenidos desplegables y la búsqueda.</p></div></article>
+  <article class="paso-desarrollo"><span class="numero-paso">4</span><div><h3>Pruebas y revisión</h3><p>Se revisó la organización de los contenidos y el funcionamiento de los elementos interactivos, procurando que la página pudiera utilizarse también desde dispositivos móviles.</p></div></article>
+  <article class="paso-desarrollo"><span class="numero-paso">5</span><div><h3>Publicación</h3><p>Finalmente, los archivos del sitio se alojaron en GitHub Pages para que la comunidad educativa pueda acceder a la plataforma mediante un enlace web.</p></div></article>
+ </div>
+ <div class="bloque-presentacion" style="margin-top:22px">
+  <h3>Herramientas y tecnologías utilizadas</h3>
+  <p>Para elaborar y publicar la plataforma se utilizaron herramientas de edición de código y tecnologías de desarrollo web.</p>
+  <div class="etiquetas-tecnologia"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>TrebEdit</span><span>GitHub</span><span>GitHub Pages</span></div>
+ </div>
+</section>
+
 <footer class="pie-pagina">
  <h3>Aula Digital</h3>
- <p>Plataforma educativa de informática.</p>
- <p>Aprender · Practicar · Descubrir</p>
+ <p>Bachillerato Técnico en Informática </p> <p>Aprender · Practicar · Descubrir</p>
 </footer>
-
-<!-- VENTANAS DE IDENTIDAD -->
-
-<div class="modal-identidad" id="modalIdentidad">
-    <div class="modal-contenido">
-
-        <button class="cerrar-modal" onclick="cerrarIdentidad()">
-            ✕
-        </button>
-
-        <span class="etiqueta">AULA DIGITAL</span>
-
-        <h2 id="tituloIdentidad">Nuestra misión</h2>
-
-        <p id="textoIdentidad"></p>
-
-        <button class="boton-cerrar" onclick="cerrarIdentidad()">
-            Entendido
-        </button>
-
-    </div>
-</div>
-
-</body>
+  
 <script>
 const materias = {
  programacion: {
@@ -1543,524 +1141,302 @@ const materias = {
 </script>
 
 <script>
-const explicaciones = {
- programacion:{
-  intro:"La programación consiste en diseñar instrucciones que una computadora puede interpretar y ejecutar para resolver problemas. Antes de escribir código, es importante comprender el problema, identificar los datos necesarios y establecer los pasos de solución.",
-  conceptos:[
-   "Algoritmo: conjunto ordenado y finito de pasos para resolver un problema.",
-   "Variable: espacio identificado por un nombre donde se almacena un dato.",
-   "Condición: permite ejecutar instrucciones dependiendo de si una expresión es verdadera o falsa.",
-   "Ciclo: repite un conjunto de instrucciones mientras se cumpla una condición."
-  ],
-  ejemplo:"Problema: calcular el promedio de tres calificaciones. Primero se ingresan las tres notas, después se suman y finalmente se divide el resultado para tres.",
-  actividad:"Diseña un algoritmo que solicite dos números, calcule su suma y muestre el resultado. Identifica las entradas, el proceso y la salida.",
-  pregunta:"¿Qué es un algoritmo?",
-  opciones:["Un conjunto ordenado de pasos","Una pieza física del computador","Un sistema operativo"],
-  correcta:0,
-  explicacion:"Un algoritmo es una secuencia ordenada y finita de instrucciones para resolver un problema."
- },
- sistemas:{
-  intro:"Los sistemas informáticos permiten procesar, almacenar y transmitir información. Un computador combina hardware, software y recursos de comunicación. Los sistemas operativos administran los recursos del equipo y facilitan la interacción con el usuario.",
-  conceptos:[
-   "Hardware: componentes físicos de un sistema informático.",
-   "Software: programas e instrucciones que ejecuta el computador.",
-   "Sistema operativo: administra memoria, procesos, archivos y dispositivos.",
-   "Red informática: conjunto de dispositivos conectados para compartir información y recursos."
-  ],
-  ejemplo:"Cuando conectas un computador a una red Wi-Fi, el sistema utiliza una interfaz de red para comunicarse con el router. Mediante protocolos como TCP/IP, los dispositivos pueden intercambiar información.",
-  actividad:"Elabora un esquema de una red doméstica. Incluye un router, dos computadores y un teléfono. Explica qué función cumple cada dispositivo.",
-  pregunta:"¿Cuál es la función principal de un sistema operativo?",
-  opciones:["Administrar los recursos del computador","Fabricar componentes electrónicos","Crear conexiones eléctricas"],
-  correcta:0,
-  explicacion:"El sistema operativo administra los recursos de hardware y permite ejecutar aplicaciones."
- },
- ofimatica:{
-  intro:"La ofimática reúne herramientas digitales utilizadas para crear documentos, procesar datos y comunicar información. Aplicaciones como Word, Excel y PowerPoint permiten realizar tareas académicas, administrativas y profesionales.",
-  conceptos:[
-   "Procesador de textos: permite crear y editar documentos.",
-   "Hoja de cálculo: organiza datos en celdas y permite realizar operaciones.",
-   "Presentación digital: comunica información mediante diapositivas.",
-   "Formato: conjunto de características visuales aplicadas a un documento."
-  ],
-  ejemplo:"Una hoja de cálculo puede almacenar las calificaciones de un curso. Con una fórmula como =PROMEDIO(B2:B6), Excel calcula el promedio de los valores seleccionados.",
-  actividad:"Crea un documento con un título, dos párrafos y una tabla. Después, diseña una hoja de cálculo con cinco datos y calcula su promedio.",
-  pregunta:"¿Qué aplicación se utiliza principalmente para trabajar con hojas de cálculo?",
-  opciones:["Microsoft Word","Microsoft Excel","Microsoft PowerPoint"],
-  correcta:1,
-  explicacion:"Microsoft Excel permite organizar datos en celdas, utilizar fórmulas y crear gráficos."
- },
- soporte:{
-  intro:"El soporte técnico comprende las actividades destinadas a mantener los equipos informáticos en buen estado, identificar problemas y ayudar a los usuarios. Para realizarlo correctamente es necesario conocer los componentes, el software y los procedimientos de mantenimiento seguro.",
-  conceptos:[
-   "CPU: componente que ejecuta instrucciones y procesa datos.",
-   "RAM: memoria temporal utilizada por los programas en ejecución.",
-   "Almacenamiento: conserva archivos y programas incluso cuando el equipo está apagado.",
-   "Mantenimiento preventivo: acciones periódicas para reducir la posibilidad de fallas."
-  ],
-  ejemplo:"Si un computador funciona lentamente, un técnico puede revisar el uso de memoria, los programas que se ejecutan al iniciar el sistema y el espacio disponible en el almacenamiento.",
-  actividad:"Dibuja un computador e identifica la placa madre, CPU, RAM, almacenamiento y fuente de alimentación. Escribe una función de cada componente.",
-  pregunta:"¿Cuál es la función de la memoria RAM?",
-  opciones:["Almacenar datos temporalmente","Mostrar imágenes en el monitor","Suministrar electricidad al equipo"],
-  correcta:0,
-  explicacion:"La RAM guarda temporalmente los datos y programas que el computador está utilizando."
- },
- web:{
-  intro:"El desarrollo web es el proceso de crear páginas y aplicaciones que pueden visualizarse mediante un navegador. HTML organiza el contenido, CSS controla su presentación visual y JavaScript permite agregar interactividad.",
-  conceptos:[
-   "HTML: lenguaje de marcado que define la estructura y el contenido.",
-   "CSS: lenguaje de estilos que controla colores, tamaños y distribución.",
-   "JavaScript: lenguaje de programación que permite crear interacciones.",
-   "Responsive design: técnica para adaptar una página a diferentes tamaños de pantalla."
-  ],
-  ejemplo:"Una página sencilla puede utilizar un encabezado HTML para mostrar su título, CSS para darle color y JavaScript para cambiar un mensaje cuando el usuario presiona un botón.",
-  actividad:"Crea una página con un título, un párrafo y una imagen. Después, modifica sus colores con CSS y agrega un botón que muestre un mensaje.",
-  pregunta:"¿Qué lenguaje se utiliza para definir la estructura de una página web?",
-  opciones:["CSS","HTML","JavaScript"],
-  correcta:1,
-  explicacion:"HTML organiza los elementos y el contenido de una página web."
- }
-};
-</script>
-
-<script>
 let materiaActual = "";
-let nivelActual = 1;
+let temaActual = "";
+
+function escapar(texto) {
+ return String(texto).replace(/[&<>"']/g, caracter => ({
+  "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#039;"
+ }[caracter]));
+}
+
+/* Explicaciones breves, concretas y relacionadas con cada área. */
+const definicionesTema = {
+ "¿Qué es la programación?":"La programación consiste en diseñar instrucciones que una computadora puede ejecutar para resolver una necesidad. El proceso parte de comprender el problema, organizar los pasos y traducir la solución a un lenguaje que el equipo pueda interpretar.",
+ "Lenguajes de programación":"Un lenguaje de programación establece reglas para expresar instrucciones. Existen lenguajes compilados e interpretados, y cada uno ofrece herramientas y sintaxis diferentes para desarrollar aplicaciones, automatizar tareas y procesar información.",
+ "Algoritmos y resolución de problemas":"Un algoritmo es una secuencia finita, ordenada y precisa de pasos. Para construirlo se identifican los datos de entrada, las operaciones necesarias y los resultados que deben obtenerse.",
+ "Pensamiento lógico":"El pensamiento lógico permite analizar una situación, reconocer patrones, comparar alternativas y ordenar razonamientos. En programación ayuda a convertir un problema amplio en pasos pequeños que pueden comprobarse.",
+ "Concepto de diagrama de flujo":"Un diagrama de flujo representa gráficamente un algoritmo. Utiliza símbolos conectados por flechas para mostrar el inicio, las operaciones, las decisiones y el final de un proceso.",
+ "Símbolos y sus funciones":"Los diagramas emplean símbolos con significados establecidos: óvalos para inicio o fin, rectángulos para procesos, rombos para decisiones y paralelogramos para entradas o salidas de datos.",
+ "Representación de algoritmos":"Representar un algoritmo significa expresar sus pasos de forma comprensible, mediante pseudocódigo o diagramas. Una representación clara facilita revisar el orden de las operaciones y detectar omisiones.",
+ "Ejercicios de diagramas de flujo":"Los ejercicios de diagramas de flujo permiten practicar la secuencia de instrucciones y las decisiones. Cada ejercicio debe comenzar identificando entradas, procesos, posibles condiciones y resultados.",
+ "Variables y constantes":"Una variable es un espacio identificado por un nombre cuyo valor puede cambiar durante la ejecución. Una constante representa un valor que se mantiene fijo y se utiliza cuando un dato no debe modificarse.",
+ "Tipos de datos":"Los tipos de datos determinan qué clase de información puede almacenarse y qué operaciones pueden realizarse. Los más comunes son enteros, reales, cadenas de texto y valores lógicos.",
+ "Operadores aritméticos":"Los operadores aritméticos permiten realizar cálculos: suma, resta, multiplicación, división y módulo. El orden de prioridad de las operaciones influye en el resultado de una expresión.",
+ "Operadores relacionales y lógicos":"Los operadores relacionales comparan valores y producen resultados verdaderos o falsos. Los operadores lógicos combinan condiciones mediante AND, OR y NOT para construir decisiones más completas.",
+ "Entorno de PSeInt":"PSeInt es un entorno educativo para escribir y ejecutar algoritmos en pseudocódigo. Su editor, las opciones de ejecución y las herramientas de seguimiento ayudan a practicar la lógica antes de utilizar lenguajes profesionales.",
+ "Pseudocódigo":"El pseudocódigo describe un algoritmo con instrucciones sencillas y estructuradas, sin depender de la sintaxis estricta de un lenguaje. Sirve como paso intermedio entre el análisis del problema y la codificación.",
+ "Declaración de variables":"Declarar una variable consiste en definir su identificador y, cuando corresponde, su tipo de dato. Después puede recibir valores mediante asignaciones o entradas del usuario.",
+ "Entrada y salida de datos":"La entrada permite recibir información, por ejemplo mediante Leer en PSeInt. La salida presenta mensajes o resultados, por ejemplo mediante Escribir. Ambas operaciones hacen posible la interacción con el usuario.",
+ "Estructuras secuenciales":"Una estructura secuencial ejecuta las instrucciones en el orden en que aparecen. Se utiliza cuando una solución requiere pasos consecutivos, como solicitar datos, calcular un resultado y mostrarlo.",
+ "Condicionales":"Las estructuras condicionales evalúan una expresión lógica y eligen qué instrucciones ejecutar. Si la condición se cumple se sigue una ruta; de lo contrario, puede ejecutarse una alternativa.",
+ "Estructuras repetitivas":"Los ciclos repiten un conjunto de instrucciones. Para se usa con un número de repeticiones conocido; Mientras y Repetir permiten controlar la repetición mediante una condición.",
+ "Contadores y acumuladores":"Un contador registra cuántas veces ocurre una acción y suele cambiar en una cantidad fija. Un acumulador conserva resultados parciales, como la suma progresiva de varios valores.",
+ "Arreglos y vectores":"Un vector almacena varios elementos del mismo conjunto bajo un único nombre. Cada elemento ocupa una posición identificada por un índice, lo que facilita recorrer datos con ciclos.",
+ "Funciones y procedimientos":"Las funciones y los procedimientos dividen un programa en módulos reutilizables. Una función puede devolver un resultado; un procedimiento ejecuta una tarea y ayuda a organizar el programa.",
+ "Resolución de problemas":"Resolver un problema con programación implica analizar requisitos, identificar entradas y salidas, diseñar un algoritmo, implementarlo y probarlo con distintos datos para comprobar que funciona.",
+ "Prácticas de programación":"Las prácticas integran variables, operadores, condiciones, ciclos y estructuras de datos. El objetivo es construir soluciones completas, probar casos diferentes y corregir errores de lógica.",
+ "Concepto de base de datos":"Una base de datos es una colección organizada de información relacionada. Permite almacenar, consultar, actualizar y administrar datos de forma estructurada para que puedan utilizarse cuando se necesiten.",
+ "Sistemas gestores de bases de datos":"Un sistema gestor de bases de datos (SGBD) es un programa que permite crear y administrar bases de datos. Controla consultas, usuarios, permisos, integridad y operaciones sobre la información.",
+ "Tablas, registros y campos":"Una tabla organiza información sobre un mismo tipo de elemento. Sus columnas son campos o atributos y cada fila es un registro que reúne los valores de una instancia.",
+ "Modelo entidad-relación":"El modelo entidad-relación representa los elementos importantes de un sistema y los vínculos entre ellos. Se utiliza para planificar una base de datos antes de crear sus tablas.",
+ "Entidades y atributos":"Una entidad representa un objeto o concepto del que se necesita guardar información, como Estudiante o Producto. Sus atributos describen sus características, por ejemplo nombre, código o precio.",
+ "Relaciones":"Las relaciones expresan cómo se vinculan las entidades. Pueden ser uno a uno, uno a muchos o muchos a muchos, y permiten representar reglas del mundo real dentro de una base de datos.",
+ "Claves primarias y foráneas":"La clave primaria identifica de manera única cada registro de una tabla. La clave foránea referencia una clave de otra tabla y permite establecer relaciones entre los datos.",
+ "Introducción a SQL":"SQL es un lenguaje utilizado para definir, consultar y modificar bases de datos relacionales. Sus instrucciones permiten trabajar con tablas y recuperar información mediante consultas.",
+ "Creación de tablas":"Crear una tabla implica definir su nombre, sus columnas, los tipos de datos y las restricciones necesarias. Una estructura bien diseñada evita almacenar información de forma desordenada.",
+ "Inserción y modificación de datos":"Las operaciones INSERT agregan registros, UPDATE modifica valores existentes y DELETE elimina registros seleccionados. Las condiciones deben revisarse cuidadosamente para afectar únicamente los datos previstos.",
+ "Consultas y filtros":"Las consultas SELECT recuperan información de una o varias tablas. WHERE filtra registros según condiciones, ORDER BY organiza resultados y las funciones de agrupación permiten resumir datos.",
+ "Sistema decimal":"El sistema decimal utiliza diez símbolos, del 0 al 9. Es posicional: el valor de cada cifra depende de su posición y de las potencias de diez.",
+ "Sistema binario":"El sistema binario utiliza únicamente los dígitos 0 y 1. Es fundamental en informática porque los circuitos digitales representan estados mediante dos condiciones eléctricas diferenciables.",
+ "Sistema octal y hexadecimal":"El sistema octal utiliza ocho símbolos y el hexadecimal utiliza dieciséis. Ambos permiten representar números binarios de manera más compacta y legible.",
+ "Conversión entre sistemas":"Convertir entre sistemas de numeración significa expresar una misma cantidad en bases distintas. Se puede utilizar la descomposición por potencias o divisiones sucesivas según la conversión.",
+ "Concepto de hardware":"El hardware comprende los componentes físicos de un sistema informático, como placa madre, procesador, memoria, almacenamiento y periféricos. Cada componente cumple una función dentro del procesamiento de datos.",
+ "Unidad central de procesamiento":"La CPU ejecuta instrucciones y coordina operaciones del computador. Sus componentes principales incluyen la unidad de control, la unidad aritmético-lógica y registros internos.",
+ "Memoria y almacenamiento":"La memoria RAM mantiene temporalmente los datos que utiliza el sistema mientras trabaja. Las unidades SSD o HDD conservan archivos y programas incluso cuando el equipo se apaga.",
+ "Dispositivos de entrada y salida":"Los dispositivos de entrada envían datos al computador, como teclado y ratón. Los de salida comunican resultados al usuario, como monitor e impresora; algunos equipos cumplen ambas funciones.",
+ "¿Qué es un sistema operativo?":"Un sistema operativo es el software principal que administra los recursos del computador y ofrece servicios a las aplicaciones. También proporciona una interfaz para que el usuario interactúe con el equipo.",
+ "Funciones principales":"Entre sus funciones están administrar procesos, memoria, archivos, dispositivos y cuentas de usuario. También coordina el acceso a los recursos y permite ejecutar programas.",
+ "Tipos de sistemas operativos":"Los sistemas operativos pueden clasificarse por el dispositivo y el uso: escritorio, servidor, móvil, tiempo real y sistemas embebidos. Cada categoría responde a necesidades distintas.",
+ "Interfaz gráfica y de comandos":"La interfaz gráfica permite interactuar mediante ventanas, iconos y menús. La interfaz de comandos recibe instrucciones escritas y resulta útil para administrar tareas de forma precisa.",
+ "Concepto de redes informáticas":"Una red informática conecta dispositivos para intercambiar información y compartir recursos. Puede utilizar cables, señales inalámbricas o una combinación de ambos medios.",
+ "Redes PAN, LAN, MAN y WAN":"PAN conecta dispositivos personales a corta distancia; LAN cubre un espacio limitado; MAN abarca una zona metropolitana; WAN conecta redes a grandes distancias.",
+ "Redes WLAN":"Una WLAN es una red local inalámbrica que utiliza tecnologías como Wi-Fi. Permite conectar dispositivos sin cableado directo, aunque requiere configurar seguridad y cobertura.",
+ "Ventajas y usos de las redes":"Las redes facilitan compartir archivos, impresoras, conexión a Internet y servicios. También permiten comunicación y administración centralizada, aunque necesitan medidas de seguridad y mantenimiento.",
+ "Topología estrella":"En una topología estrella, los dispositivos se conectan a un punto central, normalmente un switch. Es sencilla de administrar, pero el equipo central es importante para la comunicación.",
+ "Topología bus y anillo":"En bus, los dispositivos comparten un medio principal; en anillo, cada nodo se conecta con otros formando un circuito. Son modelos útiles para estudiar cómo se organiza el tráfico de red.",
+ "Medios guiados y no guiados":"Los medios guiados transmiten señales por cables, como par trenzado y fibra óptica. Los no guiados utilizan ondas electromagnéticas, como Wi-Fi, radio y enlaces inalámbricos.",
+ "Dispositivos de conectividad":"Switches, routers, puntos de acceso y módems permiten conectar equipos y redes. Cada dispositivo cumple funciones diferentes en la distribución y encaminamiento de datos.",
+ "Modelo OSI y sus siete capas":"El modelo OSI divide la comunicación en siete capas: física, enlace, red, transporte, sesión, presentación y aplicación. Sirve como referencia para comprender y diagnosticar la comunicación entre sistemas.",
+ "Modelo TCP/IP":"TCP/IP es un conjunto de protocolos que permite la comunicación en Internet y otras redes. Organiza funciones en capas y define cómo se direccionan, transportan y reciben los datos.",
+ "Protocolos de comunicación":"Un protocolo establece reglas para intercambiar información, como formato, orden y control de errores. Ejemplos conocidos son TCP, IP, DNS, HTTP y DHCP.",
+ "Direcciones IP: introducción":"Una dirección IP identifica lógicamente una interfaz dentro de una red. Permite localizar el origen y destino de los paquetes para que puedan encaminarse correctamente.",
+ "Direcciones IPv4 e IPv6":"IPv4 utiliza direcciones de 32 bits representadas en cuatro números decimales. IPv6 utiliza 128 bits y una notación hexadecimal, ofreciendo un espacio de direcciones mucho mayor.",
+ "Direcciones públicas y privadas":"Las direcciones públicas son encaminables en Internet. Las privadas se utilizan dentro de redes locales y normalmente acceden a Internet mediante mecanismos como la traducción de direcciones.",
+ "Máscara de subred":"La máscara de subred permite distinguir qué parte de una dirección IP identifica la red y qué parte identifica al dispositivo. Es necesaria para determinar si un destino está en la misma red.",
+ "Puerta de enlace predeterminada":"La puerta de enlace predeterminada es el dispositivo al que un equipo envía tráfico destinado a otras redes. En una red doméstica suele ser la dirección local del router.",
+ "DNS y resolución de nombres":"DNS traduce nombres de dominio legibles, como un sitio web, a direcciones IP. Esta resolución permite que los usuarios utilicen nombres en lugar de memorizar direcciones numéricas.",
+ "DHCP y asignación de IP":"DHCP asigna automáticamente parámetros de red, como dirección IP, máscara, puerta de enlace y DNS. Reduce la configuración manual y ayuda a evitar conflictos de direcciones.",
+ "Protocolos HTTP y HTTPS":"HTTP permite solicitar y transferir recursos web. HTTPS añade cifrado mediante TLS, ayudando a proteger la información intercambiada entre el navegador y el servidor.",
+ "Servicios de transferencia de archivos":"Los servicios de transferencia permiten mover archivos entre dispositivos o servidores. Según el protocolo, pueden incluir autenticación, cifrado y controles para administrar las transferencias.",
+ "Direcciones MAC":"Una dirección MAC identifica una interfaz de red en el nivel de enlace. Se utiliza para entregar tramas dentro de una red local y es distinta de la dirección IP.",
+ "Configuración básica de red":"Configurar una red implica establecer parámetros como dirección IP, máscara, puerta de enlace y DNS. También se verifica que el dispositivo pueda comunicarse con otros equipos.",
+ "Comandos de diagnóstico":"Herramientas como ping, ipconfig o ifconfig, tracert y nslookup ayudan a revisar conectividad, configuración y resolución de nombres. Sus resultados orientan el diagnóstico de problemas.",
+ "Seguridad y protección de redes":"La seguridad de redes busca proteger la confidencialidad, integridad y disponibilidad de la información. Incluye contraseñas robustas, actualizaciones, cifrado, permisos y configuración segura de equipos.",
+ "¿Qué es la ofimática?":"La ofimática reúne aplicaciones y técnicas digitales para crear documentos, organizar datos, realizar cálculos y comunicar información. Se utiliza en actividades académicas, administrativas y laborales.",
+ "Aplicaciones de oficina":"Las aplicaciones de oficina incluyen procesadores de texto, hojas de cálculo, presentaciones y herramientas de comunicación. Cada una resuelve tareas diferentes y puede complementarse con las demás.",
+ "Entorno de trabajo":"El entorno de trabajo reúne menús, barras de herramientas, paneles y áreas de edición. Conocerlo permite localizar funciones y trabajar con mayor orden y eficiencia.",
+ "Gestión de archivos":"Gestionar archivos consiste en crear, nombrar, guardar, organizar, copiar y compartir documentos. Una estructura clara de carpetas facilita encontrar información y conservar versiones.",
+ "Introducción a Microsoft Word":"Word es un procesador de textos que permite redactar, editar y dar formato a documentos. Incluye herramientas para párrafos, estilos, tablas, imágenes y revisión.",
+ "Creación y guardado de documentos":"Crear un documento implica iniciar un archivo, introducir contenido y guardarlo en una ubicación adecuada. Elegir un nombre claro y un formato correcto facilita su recuperación y distribución.",
+ "Formato de texto y párrafos":"El formato modifica la apariencia del texto mediante fuente, tamaño, color, alineación, sangrías e interlineado. Aplicarlo con coherencia mejora la legibilidad del documento.",
+ "Configuración de páginas":"La configuración de página permite establecer márgenes, orientación, tamaño de papel y saltos. Estos ajustes determinan cómo se distribuye el contenido al imprimir o exportar.",
+ "Inserción de imágenes":"Insertar imágenes permite complementar la información de un documento. Es importante elegir archivos pertinentes, ajustar su tamaño y controlar la posición y el ajuste del texto.",
+ "Creación de tablas":"Las tablas organizan información en filas y columnas. Son útiles para comparar datos, presentar horarios o estructurar registros de manera clara.",
+ "Encabezados y pies de página":"Los encabezados y pies de página muestran información repetida, como títulos, fechas, nombres o números de página. Ayudan a identificar y organizar documentos extensos.",
+ "Revisión y corrección de textos":"La revisión permite detectar errores ortográficos, gramaticales y de formato. Las herramientas automáticas ayudan, pero es necesario comprobar que el texto conserve sentido y precisión.",
+ "Estilos y formato profesional":"Los estilos aplican conjuntos coherentes de formato a títulos y párrafos. Facilitan mantener una apariencia uniforme y permiten generar índices automáticos.",
+ "Índices y tablas de contenido":"Una tabla de contenido reúne los títulos y sus páginas para orientar al lector. Se genera con estilos de encabezado y puede actualizarse cuando cambia el documento.",
+ "Numeración y secciones":"La numeración organiza páginas y apartados. Los saltos de sección permiten aplicar configuraciones distintas, como orientación o encabezados, dentro de un mismo documento.",
+ "Combinar correspondencia":"Combinar correspondencia crea documentos personalizados a partir de una plantilla y una fuente de datos. Se utiliza para generar cartas, etiquetas o certificados con información variable.",
+ "Introducción a Microsoft Excel":"Excel es una hoja de cálculo que organiza información en celdas y permite realizar operaciones, análisis y gráficos. Sus fórmulas recalculan resultados cuando cambian los datos.",
+ "Filas, columnas y celdas":"Las filas se identifican con números, las columnas con letras y su intersección forma una celda. Cada celda tiene una referencia, como A1, que permite utilizarla en fórmulas.",
+ "Fórmulas y operadores":"Una fórmula comienza con el signo igual y combina referencias, valores y operadores. Puede realizar cálculos aritméticos y relacionar información de distintas celdas.",
+ "Funciones básicas y estadísticas":"Las funciones realizan cálculos frecuentes. SUMA, PROMEDIO, MAX y MIN permiten resumir conjuntos de datos y obtener indicadores para interpretar una hoja de cálculo.",
+ "Introducción a PowerPoint":"PowerPoint permite crear presentaciones mediante diapositivas que combinan texto, imágenes, gráficos y otros recursos. Una buena presentación apoya la exposición sin sustituir al expositor.",
+ "Diseño de diapositivas":"El diseño organiza títulos, textos e imágenes dentro de cada diapositiva. La consistencia visual, el contraste y la jerarquía facilitan que el público identifique las ideas principales.",
+ "Imágenes, gráficos y multimedia":"Los recursos visuales y multimedia complementan una presentación cuando aportan información relevante. Deben ser legibles, pertinentes y tener una calidad adecuada para el contexto.",
+ "Exposición y comunicación visual":"Una exposición eficaz combina una estructura clara, lenguaje comprensible y apoyo visual. Las diapositivas deben destacar ideas clave y el expositor debe ampliar la información oralmente.",
+ "¿Qué es el soporte técnico?":"El soporte técnico ayuda a mantener los equipos y resolver dificultades de hardware o software. Incluye atención al usuario, diagnóstico, mantenimiento y documentación de las intervenciones.",
+ "Hardware y software":"Hardware son los componentes físicos del equipo; software son los programas y sistemas que se ejecutan. Ambos dependen entre sí para que un computador funcione correctamente.",
+ "Tipos de mantenimiento":"El mantenimiento preventivo busca reducir fallas mediante revisiones periódicas. El correctivo se realiza después de detectar un problema y busca recuperar el funcionamiento del equipo.",
+ "Herramientas de trabajo":"Las herramientas de soporte incluyen destornilladores adecuados, instrumentos de medición, materiales de limpieza y utilidades de diagnóstico. Se seleccionan según la tarea y las indicaciones de seguridad.",
+ "Placa madre":"La placa madre es la tarjeta principal que conecta procesador, memoria, almacenamiento y periféricos. Sus buses, ranuras y conectores permiten que los componentes intercambien información.",
+ "Procesador o CPU":"El procesador ejecuta instrucciones y realiza operaciones sobre los datos. Su rendimiento depende de factores como arquitectura, núcleos, frecuencia y capacidad de refrigeración.",
+ "Memoria RAM":"La memoria RAM almacena temporalmente datos e instrucciones que el procesador necesita con rapidez. Es volátil: su contenido se pierde cuando el equipo deja de recibir energía.",
+ "Dispositivos de almacenamiento":"Los HDD y SSD conservan el sistema operativo, programas y archivos. Se diferencian en tecnología, velocidad, capacidad, resistencia y costo.",
+ "Dispositivos de entrada":"Teclados, ratones, micrófonos y escáneres permiten introducir datos o instrucciones. El sistema recibe esa información para procesarla mediante aplicaciones.",
+ "Dispositivos de salida":"Monitores, impresoras y altavoces presentan al usuario los resultados del procesamiento. La elección depende del tipo de información que se necesita comunicar.",
+ "Puertos y conectores":"Los puertos permiten conectar periféricos y transferir datos, video o energía. USB, HDMI, Ethernet y conectores de audio tienen características y usos diferentes.",
+ "Compatibilidad de componentes":"La compatibilidad depende de especificaciones como socket, tipo de memoria, dimensiones, conectores y requisitos de energía. Revisarlas antes de una actualización evita adquirir piezas que no funcionen juntas.",
+ "Concepto de electricidad":"La electricidad se relaciona con la presencia y el movimiento de cargas eléctricas. En los equipos informáticos permite alimentar circuitos y convertir energía en operaciones útiles.",
+ "Voltaje, corriente y resistencia":"El voltaje representa diferencia de potencial, la corriente es el flujo de carga y la resistencia se opone a ese flujo. Estas magnitudes permiten describir el comportamiento de un circuito.",
+ "Ley de Ohm":"La ley de Ohm relaciona voltaje, corriente y resistencia mediante V = I × R. Permite calcular una magnitud cuando se conocen las otras dos en un circuito que cumple sus condiciones.",
+ "Circuitos eléctricos básicos":"Un circuito necesita una fuente, conductores y una carga conectados en un recorrido. Los circuitos en serie comparten corriente; los paralelos ofrecen varias ramas de conexión.",
+ "Resistencias":"Las resistencias limitan o controlan el paso de corriente y producen una caída de tensión. Su valor se expresa en ohmios y puede identificarse mediante códigos de colores o etiquetas.",
+ "Condensadores":"Los condensadores almacenan energía temporalmente en un campo eléctrico. Se utilizan para filtrar señales, estabilizar fuentes y participar en circuitos de temporización.",
+ "Diodos y LED":"Un diodo permite el paso de corriente principalmente en una dirección. Un LED es un diodo que emite luz cuando circula corriente en el sentido adecuado.",
+ "Fuentes de alimentación":"La fuente convierte la energía de entrada en tensiones continuas adecuadas para los componentes. Su capacidad, conectores y estabilidad deben corresponder a los requisitos del equipo.",
+ "Tipos de software":"El software puede clasificarse en sistema, aplicación y programación. El software de sistema administra el equipo; las aplicaciones resuelven tareas y las herramientas de programación permiten crear programas.",
+ "Instalación de programas":"Instalar un programa consiste en incorporar sus archivos y componentes al sistema. Antes de hacerlo se comprueban requisitos, procedencia confiable, licencia y compatibilidad.",
+ "Actualizaciones":"Las actualizaciones corrigen errores, mejoran funciones y pueden solucionar vulnerabilidades. Mantener programas y sistemas actualizados contribuye a la estabilidad y protección del equipo.",
+ "Mantenimiento preventivo":"El mantenimiento preventivo incluye inspecciones, limpieza externa apropiada, revisión de espacio y actualizaciones. Se planifica para conservar el rendimiento y reducir interrupciones.",
+ "Chasis y organización interna":"El chasis sostiene y protege los componentes, facilita el flujo de aire y organiza cables. Su tamaño debe ser compatible con la placa madre y los demás elementos.",
+ "Fuente de alimentación":"La fuente de alimentación distribuye energía con diferentes tensiones a los componentes. Una selección adecuada considera potencia, calidad, conectores y eficiencia.",
+ "Sistemas de refrigeración":"La refrigeración disipa el calor generado por procesador, tarjeta gráfica y otros componentes. Puede utilizar ventiladores, disipadores o sistemas líquidos diseñados para el equipo.",
+ "Tarjetas de expansión":"Las tarjetas de expansión añaden funciones mediante ranuras de la placa madre. Ejemplos son tarjetas gráficas, de sonido y de red; deben ser compatibles con la plataforma.",
+ "Limpieza y mantenimiento preventivo":"La limpieza preventiva busca evitar acumulación de polvo y obstrucciones que afecten la ventilación. Se realiza con el equipo apagado y siguiendo las recomendaciones del fabricante.",
+ "Identificación de fallas":"Identificar una falla requiere observar síntomas, recopilar información del usuario y delimitar cuándo ocurre el problema. Un diagnóstico ordenado evita cambiar componentes sin evidencia.",
+ "Diagnóstico de hardware":"El diagnóstico de hardware combina inspección, revisión de conexiones y herramientas de prueba. Los resultados ayudan a distinguir problemas físicos de fallas de software o configuración.",
+ "Pruebas de funcionamiento":"Las pruebas verifican que el equipo cumpla sus funciones después de una intervención. Se comprueban arranque, periféricos, temperatura, almacenamiento y estabilidad según el caso.",
+ "BIOS y UEFI":"BIOS y UEFI son firmware que inicializa componentes y prepara el inicio del sistema operativo. UEFI es la plataforma moderna que ofrece funciones y compatibilidad ampliadas.",
+ "Instalación de sistemas operativos":"Instalar un sistema operativo implica comprobar requisitos, preparar el medio de instalación, seleccionar el destino y completar la configuración inicial. Antes se deben respaldar los datos importantes.",
+ "Controladores o drivers":"Los controladores permiten que el sistema operativo se comunique con dispositivos específicos. Instalar versiones compatibles ayuda a que audio, video, red y periféricos funcionen correctamente.",
+ "Mantenimiento correctivo y documentación":"El mantenimiento correctivo atiende una falla ya presente. Documentar síntomas, pruebas, acciones y resultados permite dar seguimiento, justificar cambios y facilitar futuras intervenciones.",
+ "¿Qué es Internet?":"Internet es una red mundial de redes que conecta dispositivos mediante protocolos comunes. Permite acceder a servicios como páginas web, correo, mensajería y transferencia de archivos.",
+ "¿Qué es la World Wide Web?":"La World Wide Web es un servicio que funciona sobre Internet y permite consultar recursos enlazados mediante navegadores. Utiliza tecnologías como URL, HTTP y HTML.",
+ "Páginas y sitios web":"Una página web es un documento que puede visualizarse en un navegador. Un sitio web reúne varias páginas relacionadas bajo una misma dirección o dominio.",
+ "Navegadores y buscadores":"Un navegador interpreta y muestra páginas web. Un buscador indexa contenidos y permite localizar información mediante palabras clave; cumplen funciones diferentes.",
+ "¿Qué es HTML?":"HTML es un lenguaje de marcado que estructura el contenido de una página mediante elementos y etiquetas. Define títulos, párrafos, enlaces, imágenes, formularios y otras partes.",
+ "Estructura básica de un documento":"Un documento HTML incluye la declaración DOCTYPE, el elemento html, la sección head para metadatos y el body para el contenido visible. Esta estructura facilita la interpretación del navegador.",
+ "Etiquetas y elementos":"Las etiquetas indican el inicio y, normalmente, el cierre de un elemento HTML. Los elementos pueden contener texto, atributos y otros elementos, formando la estructura de la página.",
+ "Títulos y párrafos":"Los encabezados HTML, de h1 a h6, organizan jerárquicamente el contenido. El elemento p representa párrafos y ayuda a separar ideas en bloques legibles.",
+ "Enlaces e hipervínculos":"Los enlaces se crean con el elemento a y el atributo href. Permiten navegar a otras páginas, archivos o secciones del mismo documento.",
+ "Inserción de imágenes":"El elemento img incorpora imágenes mediante el atributo src. El atributo alt ofrece una descripción textual que mejora la accesibilidad y sirve cuando la imagen no se carga.",
+ "Listas ordenadas y desordenadas":"Las listas ordenadas usan ol cuando importa la secuencia; las desordenadas usan ul cuando el orden no es esencial. Cada elemento se representa con li.",
+ "Organización del contenido":"Organizar contenido significa agrupar información relacionada, establecer títulos claros y mantener una jerarquía. Una estructura coherente facilita la lectura y la navegación.",
+ "Etiquetas semánticas":"Las etiquetas semánticas describen el propósito del contenido. header, nav, main, section, article y footer ayudan a estructurar documentos comprensibles para navegadores y tecnologías de asistencia.",
+ "Tablas HTML":"Las tablas presentan datos relacionados en filas y columnas. Se construyen con table, tr, th y td, y deben reservarse para información tabular, no para diseñar toda la página.",
+ "Formularios":"Los formularios permiten recopilar información mediante controles como input, select y textarea. Las etiquetas label, los tipos adecuados y la validación mejoran su uso y accesibilidad.",
+ "Atributos y propiedades":"Los atributos aportan información adicional a los elementos HTML, como id, class, href o src. Permiten identificar elementos, enlazar recursos y aplicar estilos o comportamientos.",
+ "¿Qué es CSS?":"CSS es un lenguaje de estilos que define la presentación visual de documentos HTML. Controla colores, tipografía, espacios, bordes y distribución de los elementos.",
+ "Selectores y propiedades":"Los selectores indican qué elementos recibirán estilos. Las propiedades, como color, margin o font-size, establecen qué aspecto se modifica y con qué valor.",
+ "Colores y fondos":"CSS permite definir colores de texto y fondos mediante nombres, valores hexadecimales, RGB o HSL. El contraste suficiente mejora la legibilidad y accesibilidad.",
+ "Tipografía y tamaños":"Las propiedades tipográficas controlan familia, tamaño, grosor, altura de línea y alineación. Una escala coherente facilita distinguir títulos, subtítulos y texto normal.",
+ "Márgenes y relleno":"El margen crea espacio exterior alrededor de un elemento; el relleno crea espacio entre su contenido y el borde. Ambos ayudan a controlar la separación visual.",
+ "Bordes y sombras":"Los bordes delimitan elementos y las sombras crean sensación de profundidad. Deben aplicarse con moderación para mantener una interfaz clara y consistente.",
+ "Modelo de cajas":"El modelo de cajas describe cada elemento como contenido, relleno, borde y margen. La propiedad box-sizing permite controlar cómo se calcula su tamaño total.",
+ "Organización de secciones":"Las secciones dividen una página en áreas con propósitos definidos. Una distribución clara facilita localizar información y mantener una estructura adaptable.",
+ "Diseño adaptable o responsive":"El diseño responsive adapta la presentación a pantallas de distintos tamaños. Utiliza diseños flexibles, imágenes adaptables y media queries para mejorar la experiencia móvil y de escritorio.",
+ "Flexbox":"Flexbox es un sistema CSS para distribuir elementos en una dimensión, ya sea en fila o columna. Facilita alinear, espaciar y reorganizar componentes dentro de un contenedor.",
+ "CSS Grid":"CSS Grid organiza elementos en filas y columnas, permitiendo construir distribuciones bidimensionales. Es útil para estructuras como galerías, paneles y diseños de página.",
+ "Transiciones y animaciones":"Las transiciones suavizan cambios entre estados de una propiedad; las animaciones permiten definir secuencias mediante keyframes. Deben aportar claridad y respetar preferencias de movimiento reducido.",
+ "Introducción a JavaScript":"JavaScript es un lenguaje de programación que añade comportamiento a las páginas web. Puede responder a eventos, modificar contenido, validar formularios y comunicarse con servicios.",
+ "Variables y tipos de datos":"Las variables almacenan valores que el programa utiliza. JavaScript trabaja con tipos como string, number, boolean, null, undefined y estructuras como objetos y arreglos.",
+ "Condicionales y ciclos":"Las condicionales permiten elegir instrucciones según una expresión. Los ciclos repiten operaciones mientras se cumpla una condición o durante un número definido de iteraciones.",
+ "Funciones y eventos":"Las funciones agrupan instrucciones reutilizables. Los eventos representan acciones como clics o escritura, y permiten ejecutar funciones cuando el usuario interactúa con la página.",
+ "Manipulación del DOM":"El DOM representa el documento HTML como una estructura de objetos. JavaScript puede seleccionar elementos, cambiar su contenido, modificar atributos y responder a cambios en la página.",
+ "Validación de formularios":"La validación comprueba que los datos introducidos cumplan condiciones antes de procesarlos. Puede revisar campos obligatorios, formatos y longitudes, y debe ofrecer mensajes claros al usuario.",
+ "Git y GitHub":"Git es un sistema de control de versiones que registra cambios en archivos y permite recuperar estados anteriores. GitHub aloja repositorios y facilita colaboración y seguimiento de proyectos.",
+ "Publicación de sitios web":"Publicar un sitio web consiste en alojar sus archivos en un servidor o plataforma para que pueda consultarse mediante una dirección. Antes se revisan enlaces, visualización móvil y funcionamiento.",
+};
+
+function obtenerFicha(materiaId, nivel, unidad, tema) {
+ const definicion = definicionesTema[tema];
+ const nombreMateria = materias[materiaId].nombre;
+ const base = definicion || (tema + " es un contenido de " + unidad + " dentro de " + nombreMateria + ". Su estudio permite comprender sus características, reconocer para qué se utiliza y relacionarlo con los demás conocimientos de esta unidad.");
+ const ejemplos = {
+  programacion: "Para aplicar este contenido, plantea un problema sencillo, identifica qué información necesitas, organiza los pasos de solución y comprueba el resultado con datos de prueba.",
+  sistemas: "Un caso práctico consiste en reconocer qué componente, configuración o protocolo participa en una situación informática y explicar cómo contribuye al funcionamiento del sistema.",
+  ofimatica: "Un ejemplo de aplicación es utilizar esta herramienta en un documento o archivo de trabajo, organizar la información y revisar que el resultado sea claro y correcto.",
+  soporte: "En una situación de soporte, primero se recopilan los síntomas, se revisan las condiciones del equipo y se documentan las comprobaciones antes de proponer una solución.",
+  web: "En una página de práctica, aplica este concepto en un ejemplo pequeño, revisa el resultado desde el navegador y comprueba que funcione también en una pantalla de teléfono."
+ };
+ return {definicion:base, ejemplo:ejemplos[materiaId]};
+}
 
 function abrirMateria(id) {
  materiaActual = id;
- nivelActual = Number(Object.keys(materias[id].niveles)[0]);
-
  document.getElementById("materias").style.display = "none";
  document.getElementById("aula").style.display = "block";
-
- document.getElementById("tituloMateria").textContent =
-  materias[id].nombre;
-
- document.getElementById("descripcionMateria").textContent =
-  materias[id].descripcion;
-
+ document.getElementById("tituloMateria").textContent = materias[id].nombre;
+ document.getElementById("descripcionMateria").textContent = materias[id].descripcion;
  document.getElementById("buscador").value = "";
-
+ document.getElementById("leccion").innerHTML = "";
+ document.getElementById("leccion").style.display = "none";
  mostrarNiveles();
- mostrarUnidades();
-
- document.getElementById("aula").scrollIntoView({
-  behavior:"smooth"
- });
+ document.getElementById("aula").scrollIntoView({behavior:"smooth"});
 }
 
 function mostrarNiveles() {
  const contenedor = document.getElementById("selectorNivel");
- const niveles = Object.keys(materias[materiaActual].niveles);
+ const niveles = materias[materiaActual].niveles;
+ const busqueda = document.getElementById("buscador").value.toLowerCase().trim();
+ let html = "";
 
- contenedor.innerHTML = niveles.map(nivel => `
-  <button
-   class="boton-nivel"
-   onclick="seleccionarNivel(${nivel})"
-   style="
-    padding:12px 18px;
-    margin:5px;
-    border:0;
-    border-radius:12px;
-    background:${Number(nivel) === nivelActual ? '#3979C9' : '#DCEBFA'};
-    color:${Number(nivel) === nivelActual ? 'white' : '#263D59'};
-    font-weight:bold;
-    cursor:pointer;
-   ">
-   ${nivel}° Bachillerato
-  </button>
- `).join("");
-}
+ Object.keys(niveles).forEach(nivel => {
+  const unidades = niveles[nivel];
+  let unidadesHtml = "";
 
-function seleccionarNivel(nivel) {
- nivelActual = nivel;
- document.getElementById("buscador").value = "";
- mostrarNiveles();
- mostrarUnidades();
- document.getElementById("leccion").innerHTML = "";
-}
+  unidades.forEach((unidad, indice) => {
+   const temas = unidad[1].filter(tema => tema.toLowerCase().includes(busqueda));
+   if (!temas.length) return;
 
-function escapar(texto) {
- return String(texto).replace(/[&<>"']/g, caracter => ({
-  "&":"&amp;",
-  "<":"&lt;",
-  ">":"&gt;",
-  '"':"&quot;",
-  "'":"&#039;"
- }[caracter]));
-}
+   const temasHtml = temas.map(tema => {
+    const ficha = obtenerFicha(materiaActual, nivel, unidad[0], tema);
+    return `
+     <details class="tema-acordeon">
+      <summary>${escapar(tema)}</summary>
+      <div class="info-tema">
+       <h4>Explicación del tema</h4>
+       <p>${escapar(ficha.definicion)}</p>
+       <h4>Ejemplo y aplicación</h4>
+       <p>${escapar(ficha.ejemplo)}</p>
+       <div class="actividad-tema">
+        <h4>Para practicar</h4>
+        <p>Escribe con tus propias palabras qué significa <strong>${escapar(tema)}</strong>. Después, menciona una situación en la que este conocimiento podría utilizarse dentro de ${escapar(materias[materiaActual].nombre.toLowerCase())}.</p>
+       </div>
+      </div>
+     </details>`;
+   }).join("");
 
-function mostrarUnidades() {
- const contenedor = document.getElementById("contenidoUnidades");
- const unidades = materias[materiaActual].niveles[nivelActual];
- const busqueda = document.getElementById("buscador").value
-  .toLowerCase().trim();
+   unidadesHtml += `
+    <details class="unidad-acordeon">
+     <summary>Unidad ${indice+1}: ${escapar(unidad[0])}</summary>
+     <div class="temas-acordeon">${temasHtml}</div>
+    </details>`;
+  });
 
- let resultado = "";
-
- unidades.forEach((unidad, indice) => {
-  const temas = unidad[1].filter(tema =>
-   tema.toLowerCase().includes(busqueda)
-  );
-
-  if (temas.length === 0) return;
-
-  resultado += `
-   <div class="unidad">
-    <div class="unidad-cabecera">
-     <h3>Unidad ${indice + 1}: ${escapar(unidad[0])}</h3>
-    </div>
-
-    <div class="lista-temas">
-     ${temas.map(tema => `
-      <button class="tema"
-       onclick="abrirLeccion('${escapar(tema).replace(/'/g,"\\'")}')">
-       <span>📘 ${escapar(tema)}</span>
-       <span>Ver lección →</span>
-      </button>
-     `).join("")}
-    </div>
-   </div>
-  `;
+  if (!unidadesHtml) return;
+  html += `
+   <details class="nivel-acordeon">
+    <summary>${nivel}° de Bachillerato</summary>
+    <div class="nivel-contenido">${unidadesHtml}</div>
+   </details>`;
  });
 
- if (!resultado) {
-  resultado = `
-   <p style="padding:20px;text-align:center">
-    No encontramos temas que coincidan con tu búsqueda.
-   </p>
-  `;
- }
+ if (!html) html = `<p style="padding:20px;text-align:center">No encontramos temas que coincidan con tu búsqueda.</p>`;
+ contenedor.innerHTML = html;
+}
 
- contenedor.innerHTML = resultado;
+function abrirLeccion(tema, nivel, indiceUnidad) {
+ const materia = materias[materiaActual];
+ const unidad = materia.niveles[nivel][indiceUnidad][0];
+ const ficha = obtenerFicha(materiaActual, nivel, unidad, tema);
+ const recursos = (materia.recursos || []).map(r => `<li><a href="${escapar(r[1])}" target="_blank" rel="noopener noreferrer">${escapar(r[0])} ↗</a></li>`).join("");
+ const leccion = document.getElementById("leccion");
+ leccion.innerHTML = `
+  <article class="contenido-tema">
+   <span class="etiqueta">${nivel}° DE BACHILLERATO · ${escapar(unidad.toUpperCase())}</span>
+   <h2>${escapar(tema)}</h2>
+   <p>${escapar(ficha.definicion)}</p>
+   <h3>¿Por qué es importante?</h3>
+   <p>Este conocimiento forma parte de ${escapar(unidad.toLowerCase())}. Comprenderlo permite relacionar la teoría con situaciones prácticas de ${escapar(materia.nombre.toLowerCase())} y avanzar hacia los siguientes temas.</p>
+   <h3>Ejemplo de aplicación</h3>
+   <p>${escapar(ficha.ejemplo)}</p>
+   <h3>Actividad para practicar</h3>
+   <p>Explica con tus propias palabras qué significa <strong>${escapar(tema)}</strong>, escribe dos ideas importantes y plantea un ejemplo relacionado con la unidad <strong>${escapar(unidad)}</strong>.</p>
+   <h3>Recursos para seguir aprendiendo</h3>
+   <ul>${recursos}</ul>
+  </article>`;
+ leccion.style.display = "block";
+ leccion.scrollIntoView({behavior:"smooth",block:"start"});
 }
 
 function filtrarTemas() {
- mostrarUnidades();
  document.getElementById("leccion").innerHTML = "";
-}
-
-
-function abrirLeccion(tema) {
- const materia = materias[materiaActual];
- const contenido = explicaciones[materiaActual];
-
- if (!materia || !contenido) {
-  alert("No se encontró el contenido de esta materia.");
-  return;
- }
-
- const leccion = document.getElementById("leccion");
-
- if (!leccion) {
-  alert("No se encontró el espacio para mostrar la lección.");
-  return;
- }
-
- const conceptos = contenido.conceptos
-  .map(c => `<li>${escapar(c)}</li>`)
-  .join("");
-
- const recursos = materia.recursos
-  .map(r => `
-   <li>
-    <a href="${r[1]}" target="_blank" rel="noopener noreferrer">
-     ${escapar(r[0])} ↗
-    </a>
-   </li>
-  `)
-  .join("");
-
-const estadoTema = temaCompletado(tema);
-const textoBoton = estadoTema
-    ? "✓ Lección completada"
-    : "Marcar como completada";
-    
- leccion.innerHTML = `
-  <article>
-   <span class="etiqueta">LECCIÓN DE APRENDIZAJE</span>
-
-   <h2>${escapar(tema)}</h2>
-
-<button
-    type="button"
-    class="boton-progreso"
-    onclick="alternarCompletado('${escapar(tema).replace(/'/g,"\\'")}')"
-    aria-pressed="${estadoTema}">
-    ${textoBoton}
-</button>
-
-   <img
-    class="imagen-leccion"
-    src="${materia.imagen}"
-    alt="${escapar(materia.nombre)}"
-    style="width:100%;object-fit:cover;border-radius:16px"
-   >
-
-   <h3>Introducción</h3>
-   <p>${escapar(contenido.intro)}</p>
-
-   <h3>Conceptos fundamentales</h3>
-   <ul>${conceptos}</ul>
-
-   <div class="ejemplo">
-    <h3>💡 Ejemplo práctico</h3>
-    <p>${escapar(contenido.ejemplo)}</p>
-   </div>
-
-   <div class="actividad">
-    <h3>✍️ Actividad de aprendizaje</h3>
-    <p>${escapar(contenido.actividad)}</p>
-   </div>
-
-   <div class="quiz">
-    <h3>🧠 Comprueba lo aprendido</h3>
-    <p><strong>${escapar(contenido.pregunta)}</strong></p>
-
-    <div class="quiz-opciones">
-     ${contenido.opciones.map((opcion, i) => `
-      <button
-       type="button"
-       class="tema"
-       style="width:100%;margin:5px 0"
-       onclick="responderQuiz(${i})">
-       ${escapar(opcion)}
-      </button>
-     `).join("")}
-    </div>
-
-    <p id="resultadoQuiz" aria-live="polite"></p>
-   </div>
-
-   <div class="recursos">
-    <h3>🔗 Recursos para seguir aprendiendo</h3>
-    <ul>${recursos}</ul>
-   </div>
-  </article>
- `;
-leccion.style.display = "block";
- leccion.scrollIntoView({
-  behavior:"smooth",
-  block:"start"
- });
-}
-
-
-function responderQuiz(respuesta) {
- const contenido = explicaciones[materiaActual];
- const resultado = document.getElementById("resultadoQuiz");
-
- if (respuesta === contenido.correcta) {
-  resultado.innerHTML = `
-   <strong style="color:#16845D">
-    ¡Correcto! 🎉
-   </strong>
-   <p>${escapar(contenido.explicacion)}</p>
-  `;
- } else {
-  resultado.innerHTML = `
-   <strong style="color:#C05A4A">
-    Todavía no es correcto. ¡Inténtalo otra vez!
-   </strong>
-   <p>Revisa los conceptos de esta lección y vuelve a intentarlo.</p>
-  `;
- }
+ document.getElementById("leccion").style.display = "none";
+ mostrarNiveles();
 }
 
 function volverMaterias() {
  document.getElementById("aula").style.display = "none";
  document.getElementById("materias").style.display = "block";
-
- document.getElementById("materias").scrollIntoView({
-  behavior:"smooth"
- });
+ document.getElementById("materias").scrollIntoView({behavior:"smooth"});
 }
 
-document.getElementById("buscador").addEventListener(
- "input",
- filtrarTemas
-);
-
-const menuToggle = document.getElementById("menuToggle");
-const menuNavegacion = document.getElementById("menuNavegacion");
-
-menuToggle.addEventListener("click", function() {
-    menuNavegacion.classList.toggle("activo");
-
-    const abierto = menuNavegacion.classList.contains("activo");
-
-    menuToggle.setAttribute("aria-expanded", abierto);
-    menuToggle.setAttribute(
-        "aria-label",
-        abierto ? "Cerrar menú" : "Abrir menú"
-    );
-});
-
-menuNavegacion.querySelectorAll("a").forEach(function(enlace) {
-    enlace.addEventListener("click", function() {
-        menuNavegacion.classList.remove("activo");
-        menuToggle.setAttribute("aria-expanded", "false");
-        menuToggle.setAttribute("aria-label", "Abrir menú");
-    });
-});
-
-// SUBMENU DE IDENTIDAD
-
-document.getElementById("botonIdentidad")
-.addEventListener("click", function() {
-    document.getElementById("opcionesIdentidad")
-    .classList.toggle("activo");
-});
-
-// ABRIR VENTANAS
-
-function mostrarIdentidad(tipo) {
-    const titulo = document.getElementById("tituloIdentidad");
-    const texto = document.getElementById("textoIdentidad");
-    const modal = document.getElementById("modalIdentidad");
-
-    if (tipo === "mision") {
-        titulo.textContent = "Nuestra misión";
-        texto.textContent =
-        "Brindar un espacio de apoyo académico accesible e interactivo que motive a los estudiantes a aprender, practicar y desarrollar sus habilidades informáticas.";
-    } else {
-        titulo.textContent = "Nuestra visión";
-        texto.textContent =
-        "Ser una plataforma educativa de referencia para el aprendizaje autónomo y el fortalecimiento de la formación técnica en nuestra institución.";
-    }
-
-    modal.classList.add("activo");
-    document.getElementById("opcionesIdentidad")
-    .classList.remove("activo");
-}
-
-// CERRAR VENTANAS
-
-function cerrarIdentidad() {
-    document.getElementById("modalIdentidad")
-    .classList.remove("activo");
-}
-
-// SISTEMA DE PROGRESO DE AULA DIGITAL
-
-function obtenerProgreso() {
-    try {
-        return JSON.parse(
-            localStorage.getItem("aulaDigitalProgreso")
-        ) || {};
-    } catch (error) {
-        return {};
-    }
-}
-
-function claveProgreso(tema) {
-    return materiaActual + "||" + nivelActual + "||" + tema;
-}
-
-function temaCompletado(tema) {
-    const progreso = obtenerProgreso();
-    return progreso[claveProgreso(tema)] === true;
-}
-
-function alternarCompletado(tema) {
-    const progreso = obtenerProgreso();
-    const clave = claveProgreso(tema);
-
-    progreso[clave] = !progreso[clave];
-
-    localStorage.setItem(
-        "aulaDigitalProgreso",
-        JSON.stringify(progreso)
-    );
-
-    abrirLeccion(tema);
-}
-
-
-// CALCULAR EL PROGRESO DE APRENDIZAJE
-
-function generarPanelProgreso() {
-    const materia = materias[materiaActual];
-
-    if (!materia || !materia.niveles[nivelActual]) {
-        return "";
-    }
-
-    const unidades = materia.niveles[nivelActual];
-    const progreso = obtenerProgreso();
-
-    let total = 0;
-    let completados = 0;
-
-    unidades.forEach(unidad => {
-        unidad[1].forEach(tema => {
-            total++;
-
-            if (progreso[claveProgreso(tema)]) {
-                completados++;
-            }
-        });
-    });
-
-    const porcentaje = total > 0
-        ? Math.round((completados / total) * 100)
-        : 0;
-
-    return `
-        <div class="panel-progreso" id="panelProgreso">
-            <div class="progreso-cabecera">
-                <div>
-                    <span class="etiqueta">TU APRENDIZAJE</span>
-                    <h3>Mi progreso</h3>
-                </div>
-                <strong id="porcentajeProgreso">
-                    ${porcentaje}%
-                </strong>
-            </div>
-
-            <div class="barra-progreso">
-                <div id="rellenoProgreso"
-                    style="width:${porcentaje}%">
-                </div>
-            </div>
-
-            <p id="contadorProgreso">
-                ${completados} de ${total} temas completados
-            </p>
-        </div>
-    `;
-}
-
-// ACTUALIZAR EL PANEL
-
-function actualizarPanelProgreso() {
-    const panel = document.getElementById("panelProgreso");
-
-    if (!panel) return;
-
-    const nuevoPanel = document.createElement("div");
-    nuevoPanel.innerHTML = generarPanelProgreso();
-
-    const contenido = nuevoPanel.firstElementChild;
-
-    document.getElementById("porcentajeProgreso").textContent =
-        contenido.querySelector("#porcentajeProgreso").textContent;
-
-    document.getElementById("rellenoProgreso").style.width =
-        contenido.querySelector("#rellenoProgreso").style.width;
-
-    document.getElementById("contadorProgreso").textContent =
-        contenido.querySelector("#contadorProgreso").textContent;
-}
-function irAlBuscador() {
-    const buscador = document.getElementById("buscador");
-
-    buscador.scrollIntoView({
-        behavior: "smooth",
-        block: "center"
-    });
-
-    buscador.focus();
-    buscador.style.border = "2px solid #38bdf8";
-}
+document.getElementById("buscador").addEventListener("input", filtrarTemas);
 </script>
+
+</body>
+</html>
